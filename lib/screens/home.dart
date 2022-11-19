@@ -20,9 +20,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       stopWatches.add(
         SingleStopWatch(
           key: UniqueKey(),
-          //seconds: 0,
-          //minutes: 0,
-          //hours: 0,
         ),
       );
     });

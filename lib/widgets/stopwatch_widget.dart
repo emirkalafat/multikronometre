@@ -110,19 +110,16 @@ class SingleStopWatchState extends State<SingleStopWatch>
       child: Card(
         color: colorScheme.surface,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 8.0),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                child: TextField(
-                  textAlign: TextAlign.center,
-                  decoration: InputDecoration(
-                    //prefixText: (widget. + 1).toString(),
-                    border: InputBorder.none,
-                    hintText: 'Başlık',
-                  ),
+              child: TextField(
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(
+                  //prefixText: (widget.index + 1).toString(),
+                  border: InputBorder.none,
+                  hintText: 'Başlık',
                 ),
               ),
             ),
@@ -131,7 +128,7 @@ class SingleStopWatchState extends State<SingleStopWatch>
               style: const TextStyle(fontSize: 64),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton.icon(
                   onPressed: () {
@@ -141,6 +138,9 @@ class SingleStopWatchState extends State<SingleStopWatch>
                   },
                   label: const Text('Tur'),
                   icon: const Icon(Icons.flag),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(110, 40),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -175,6 +175,9 @@ class SingleStopWatchState extends State<SingleStopWatch>
                   ),
                   icon: Icon(Icons.refresh,
                       color: !isStarted ? Colors.grey : Colors.red),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(110, 40),
+                  ),
                 )
               ],
             ),
