@@ -1,3 +1,7 @@
+///Ahmet Emir Kalafat tarafından oluşturuldu.
+///18.11.2022
+///Birden fazla kronometre oluşturulabilen flutter uygulaması.
+
 import 'package:flutter/material.dart';
 import 'screens/home.dart';
 
@@ -7,11 +11,12 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  // This widget is the root of your application.
+  // Bu widget uygulamanın köküdür.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Multi StopWatch App',
+      debugShowCheckedModeBanner: false,
+      title: 'Çoklu Kronometre Uygulaması',
       theme: ThemeData(
         useMaterial3: true,
         primarySwatch: Colors.indigo,

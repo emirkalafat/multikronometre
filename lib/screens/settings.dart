@@ -14,11 +14,14 @@ class SettingsScreen extends StatelessWidget {
         children: [
           ElevatedButton(
               onPressed: () {
-                showAboutDialog(context: context);
+                showAboutDialog(
+                  context: context,
+                  applicationVersion: '1.0.0',
+                );
               },
               child: const Text('About')),
           const Center(
-            child: Text('Settings'),
+            child: Text('Versiyon: 1.0.0'),
           ),
         ],
       ),
