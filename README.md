@@ -1,16 +1,16 @@
-# multikronometre
+# Multikronometre
 
-A new Flutter project.
+Flutter ile yazılmış 10 taneye kadar kronometre tanımlayabildiğiniz bir mobil uygulama.
 
-## Getting Started
+## Başlangıç
 
-This project is a starting point for a Flutter application.
+Bu uygulamayı mobil mağazalarda bulabilirsiniz.
 
-A few resources to get you started if this is your first Flutter project:
+- [Google Play Store](https://docs.flutter.dev/get-started/codelab)
+- IOS App Store - Henüz Paylaşılmadı
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Katkıda Bulun
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Uygulama ile ilgli bir sıkıntınız geliştirilmesini istediğiniz bir problem ya da herhangi bir görüşünüz için "issues" kısmını kullanabilirsiniz.
+
+### Emir Kalafat Flutter💙 ile oluşturdu
