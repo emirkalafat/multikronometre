@@ -41,17 +41,20 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   }
 
   void _lapAll() {
+    //!Bu fonksiyon çalışmıyor.
+    //TODO: #1 Bütün kronometrelere aynı anda tur eklemeyi sağla.
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    //final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: buildAppBar(context),
       body: Column(
         children: [
+          //kronometrelerin bulunduğu alan
           buildStopWatchList(),
+          //kronometre ekleme, hepsini silme ve hepsine tur atlatma butonlarının bulunduğu alan
           buildBottomButtons(),
           const SizedBox(
             height: 12,
@@ -119,28 +122,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             )
             .toList(),
       ),
-      //itemCount: stopWatches.length,
-      //itemBuilder: (context, index) {
-      //  return Dismissible(
-      //    key: stopWatches[index].key!,
-      //    onDismissed: (direction) {
-      //      setState(() {
-      //        _deleteWatch(index);
-      //      });
-      //    },
-      //    background: Container(
-      //      color: colorScheme.error.withOpacity(0.7),
-      //      child: const Icon(
-      //        Icons.delete,
-      //        color: Colors.white,
-      //      ),
-      //    ),
-      //    child: KeepAlive(
-      //      keepAlive: true,
-      //      child: stopWatches[index],
-      //    ),
-      //  );
-      //},
     );
   }
 
@@ -156,7 +137,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             icon: const Icon(Icons.flag),
             style: ElevatedButton.styleFrom(
               minimumSize: const Size(150, 42),
-              //backgroundColor: Colors.red,
             ),
           ),
           ElevatedButton.icon(

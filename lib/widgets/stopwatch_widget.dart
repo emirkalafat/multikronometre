@@ -3,14 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class SingleStopWatch extends StatefulWidget {
-  //final int seconds;
-  //final int minutes;
-  //final int hours;
   const SingleStopWatch({
     Key? key,
-    //required this.seconds,
-    //required this.minutes,
-    //required this.hours,
   }) : super(key: key);
 
   @override
@@ -99,9 +93,7 @@ class SingleStopWatchState extends State<SingleStopWatch>
   @override
   void initState() {
     super.initState();
-    //seconds = widget.seconds;
-    //minutes = widget.minutes;
-    //hours = widget.hours;
+
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 500));
   }
@@ -116,6 +108,7 @@ class SingleStopWatchState extends State<SingleStopWatch>
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
+        color: colorScheme.surface,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -188,23 +181,23 @@ class SingleStopWatchState extends State<SingleStopWatch>
             if (stops.isNotEmpty) const Divider(),
             if (stops.isNotEmpty)
               Container(
-                  constraints: const BoxConstraints(
-                    minHeight: 0,
-                    maxHeight: 200,
-                  ),
-                  //duration: const Duration(milliseconds: 1000),
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: stops
-                        .asMap()
-                        .entries
-                        .map(
-                          (stop) => ListTile(
-                            title: Text('${stop.key + 1}. ${stop.value}'),
-                          ),
-                        )
-                        .toList(),
-                  ))
+                constraints: const BoxConstraints(
+                  minHeight: 0,
+                  maxHeight: 200,
+                ),
+                child: ListView(
+                  shrinkWrap: true,
+                  children: stops
+                      .asMap()
+                      .entries
+                      .map(
+                        (stop) => ListTile(
+                          title: Text('${stop.key + 1}. ${stop.value}'),
+                        ),
+                      )
+                      .toList(),
+                ),
+              )
           ],
         ),
       ),
