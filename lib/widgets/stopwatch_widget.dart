@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:multikronometre/screens/home.dart';
 
 class SingleStopWatch extends StatefulWidget {
   const SingleStopWatch({
@@ -164,17 +165,28 @@ class SingleStopWatchState extends State<SingleStopWatch>
                 ),
                 ElevatedButton.icon(
                   onPressed: !isStarted
-                      ? null
+                      ? () {
+                          setState(() {
+                            stopWatches.removeWhere(
+                                (element) => widget.key == element.key);
+                          });
+                          //for (var element in stopWatches) {
+                          //  if (element.key == widget.key) {
+                          //    stopWatches.remove(element);
+                          //  }
+                          //}
+                        }
                       : () {
                           _reset();
                         },
                   label: Text(
-                    'Sıfırla',
-                    style:
-                        TextStyle(color: !isStarted ? Colors.grey : Colors.red),
+                    !isStarted ? 'Sil' : 'Sıfırla',
+                    style: const TextStyle(color: Colors.red),
                   ),
-                  icon: Icon(Icons.refresh,
-                      color: !isStarted ? Colors.grey : Colors.red),
+                  icon: Icon(
+                    !isStarted ? Icons.delete : Icons.refresh,
+                    color: Colors.red,
+                  ),
                   style: ElevatedButton.styleFrom(
                     minimumSize: const Size(110, 40),
                   ),
