@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../widgets/stopwatch_widget.dart';
 import 'settings.dart';
 
+List<SingleStopWatch> stopWatches = List.empty(growable: true);
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
@@ -13,13 +15,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  List<SingleStopWatch> stopWatches = List.empty(growable: true);
-
   void _addWatch() {
+    var currentKey = UniqueKey();
     setState(() {
       stopWatches.add(
         SingleStopWatch(
-          key: UniqueKey(),
+          key: currentKey,
         ),
       );
     });
