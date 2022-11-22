@@ -11,6 +11,6 @@ Bu uygulamayı mobil mağazalarda bulabilirsiniz.
 
 ## Katkıda Bulun
 
-Uygulama ile ilgli bir sıkıntınız geliştirilmesini istediğiniz bir problem ya da herhangi bir görüşünüz için "issues" kısmını kullanabilirsiniz.
+Uygulama ile ilgli bir sıkıntınız, geliştirilmesini istediğiniz bir problem ya da herhangi bir görüşünüz için "issues" kısmını kullanabilirsiniz.
 
-### Emir Kalafat Flutter💙 ile oluşturdu
+### Emir Kalafat, Flutter💙 ile oluşturdu

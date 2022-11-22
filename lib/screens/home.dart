@@ -75,9 +75,14 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   Widget buildStopWatchList() {
     final colorScheme = Theme.of(context).colorScheme;
+    final orientation = MediaQuery.of(context).orientation;
     return Expanded(
-      child: ListView(
+      child: GridView(
         semanticChildCount: stopWatches.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: orientation == Orientation.portrait ? 1 : 2,
+          childAspectRatio: 1.6,
+        ),
         children: stopWatches
             .asMap()
             .entries
