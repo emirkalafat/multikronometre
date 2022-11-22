@@ -164,7 +164,9 @@ class SingleStopWatchState extends State<SingleStopWatch>
                 ),
                 ElevatedButton.icon(
                   onPressed: !isStarted
-                      ? null
+                      ? () {
+                          dispose();
+                        }
                       : () {
                           _reset();
                         },
