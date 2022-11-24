@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/stopwatch_widget.dart';
@@ -15,12 +16,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+  void callback() {
+    setState(() {});
+  }
+
   void _addWatch() {
     var currentKey = UniqueKey();
     setState(() {
       stopWatches.add(
         SingleStopWatch(
           key: currentKey,
+          callback: callback,
         ),
       );
     });
@@ -60,70 +66,85 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: stopWatches.length >= 10 ? Colors.grey : null,
-        onPressed: stopWatches.length >= 10
-            ? null
-            : () {
-                _addWatch();
-              },
-        tooltip: 'Yeni Kronometre Ekle',
-        child: const Icon(Icons.add),
+      floatingActionButton: Badge(
+        badgeContent: Text(
+          stopWatches.length.toString(),
+          style: const TextStyle(color: Colors.white),
+        ),
+        child: FloatingActionButton(
+          backgroundColor: stopWatches.length >= 10 ? Colors.grey : null,
+          onPressed: stopWatches.length >= 10
+              ? null
+              : () {
+                  _addWatch();
+                },
+          tooltip: 'Yeni Kronometre Ekle',
+          child: const Icon(Icons.add),
+        ),
       ),
     );
   }
+
+  ScrollController scrollController = ScrollController();
 
   Widget buildStopWatchList() {
     final colorScheme = Theme.of(context).colorScheme;
     final orientation = MediaQuery.of(context).orientation;
     return Expanded(
-      child: GridView(
-        semanticChildCount: stopWatches.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: orientation == Orientation.portrait ? 1 : 2,
-          childAspectRatio: 1.6,
+      child: Scrollbar(
+        interactive: true,
+        thumbVisibility: stopWatches.isNotEmpty ? true : false,
+        controller: scrollController,
+        child: GridView(
+          controller: scrollController,
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          semanticChildCount: stopWatches.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            childAspectRatio: 2.3,
+            crossAxisCount: orientation == Orientation.portrait ? 1 : 2,
+          ),
+          children: stopWatches
+              .asMap()
+              .entries
+              .map(
+                (stopWatch) => Dismissible(
+                  key: stopWatch.value.key!,
+                  onDismissed: (direction) {
+                    _deleteWatch(stopWatch.key);
+                  },
+                  background: Container(
+                    color: colorScheme.error,
+                    child: const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 16),
+                        child: Icon(
+                          Icons.delete,
+                          color: Colors.white,
+                          size: 36,
+                        ),
+                      ),
+                    ),
+                  ),
+                  secondaryBackground: Container(
+                    color: colorScheme.error,
+                    child: const Align(
+                      alignment: Alignment.centerRight,
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 16),
+                        child: Icon(
+                          Icons.delete,
+                          color: Colors.white,
+                          size: 36,
+                        ),
+                      ),
+                    ),
+                  ),
+                  child: stopWatch.value,
+                ),
+              )
+              .toList(),
         ),
-        children: stopWatches
-            .asMap()
-            .entries
-            .map(
-              (stopWatch) => Dismissible(
-                key: stopWatch.value.key!,
-                onDismissed: (direction) {
-                  _deleteWatch(stopWatch.key);
-                },
-                background: Container(
-                  color: colorScheme.error,
-                  child: const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 16),
-                      child: Icon(
-                        Icons.delete,
-                        color: Colors.white,
-                        size: 36,
-                      ),
-                    ),
-                  ),
-                ),
-                secondaryBackground: Container(
-                  color: colorScheme.error,
-                  child: const Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 16),
-                      child: Icon(
-                        Icons.delete,
-                        color: Colors.white,
-                        size: 36,
-                      ),
-                    ),
-                  ),
-                ),
-                child: stopWatch.value,
-              ),
-            )
-            .toList(),
       ),
     );
   }
@@ -132,16 +153,17 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     return Container(
       padding: const EdgeInsets.all(8),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          ElevatedButton.icon(
-            onPressed: stopWatches.isNotEmpty ? () {} : null,
-            label: const Text('Hepsine Tur'),
-            icon: const Icon(Icons.flag),
-            style: ElevatedButton.styleFrom(
-              minimumSize: const Size(150, 42),
-            ),
-          ),
+          //?Tüm kronometrelere aynı anda tur eklemeyi sağla.
+          //ElevatedButton.icon(
+          //  onPressed: stopWatches.isNotEmpty ? () {} : null,
+          //  label: const Text('Hepsine Tur'),
+          //  icon: const Icon(Icons.flag),
+          //  style: ElevatedButton.styleFrom(
+          //    minimumSize: const Size(150, 42),
+          //  ),
+          //),
           ElevatedButton.icon(
             onPressed: stopWatches.isNotEmpty
                 ? () {
