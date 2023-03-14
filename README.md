@@ -6,7 +6,7 @@ Flutter ile yazılmış 10 taneye kadar kronometre tanımlayabildiğiniz bir mob
 
 Bu uygulamayı mobil mağazalarda bulabilirsiniz.
 
-- [Google Play Store](https://docs.flutter.dev/get-started/codelab)
+- [Google Play Store](https://play.google.com/store/apps/details?id=com.garlicman.multistopwatch)
 - IOS App Store - Henüz Paylaşılmadı
 
 ## Katkıda Bulun
@@ -14,3 +14,5 @@ Bu uygulamayı mobil mağazalarda bulabilirsiniz.
 Uygulama ile ilgli bir sıkıntınız, geliştirilmesini istediğiniz bir problem ya da herhangi bir görüşünüz için "issues" kısmını kullanabilirsiniz.
 
 ### Emir Kalafat, Flutter💙 ile oluşturdu
+
+[.](https://docs.flutter.dev/get-started/codelab)
